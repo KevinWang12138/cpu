@@ -2,10 +2,10 @@
 # Vivado v2021.2 (64-bit)
 # SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
 # IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
-# Start of session at: Mon Jan  3 16:06:52 2022
-# Process ID: 12876
+# Start of session at: Mon Jan  3 23:37:57 2022
+# Process ID: 12552
 # Current directory: C:/Users/75230/Desktop/lab4/project_1
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7848 C:\Users\75230\Desktop\lab4\project_1\project_1.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3996 C:\Users\75230\Desktop\lab4\project_1\project_1.xpr
 # Log file: C:/Users/75230/Desktop/lab4/project_1/vivado.log
 # Journal file: C:/Users/75230/Desktop/lab4/project_1\vivado.jou
 # Running On: LAPTOP-5SB46T2D, OS: Windows, CPU Frequency: 2400 MHz, CPU Physical cores: 4, Host memory: 8387 MB
@@ -19,65 +19,32 @@ export_simulation -of_objects [get_files C:/Users/75230/Desktop/lab4/rtl/xilinx_
 launch_simulation
 open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
 source tb_top.tcl
-close_sim
-launch_simulation
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/hilo_reg/hi_o}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/hilo_reg/lo_o}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/rf/ra1}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/rf/ra2}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/rf/rd1}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/rf/rd2}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/rf/rf}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/rf/wd3}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/hilo_reg/hi}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/hilo_reg/lo}} 
 close_sim
 launch_simulation
 open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
 source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/75230/Desktop/lab4/tb_top_behav.wcfg
-source tb_top.tcl
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/hilo_reg/hi_o}} 
+current_wave_config {tb_top_behav.wcfg}
+add_wave {{/tb_top/soc/cpu/mips/dp/hilo_reg/lo_o}} 
 close_sim

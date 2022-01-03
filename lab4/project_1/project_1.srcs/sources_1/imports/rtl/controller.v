@@ -39,7 +39,8 @@ module controller(
 	output wire memtoregW,regwriteW,
 	
 	output wire hiwriteE,lowriteE,hiwriteM,lowriteM,
-	output wire hireadE,loreadE
+	output wire hireadE,loreadE,
+	output wire multE,multM
     );
 	
 	//decode stage
@@ -61,24 +62,25 @@ module controller(
 		jumpD,
 		
 		hiwriteD,lowriteD,
-		hireadD,loreadD
+		hireadD,loreadD,
+		multD
 		);
 	aludec ad(functD,opD,alucontrolD);
 
 	assign pcsrcD = branchD & equalD;
 
 	//pipeline registers
-	floprc #(17) regE(
+	floprc #(18) regE(
 		clk,
 		rst,
 		flushE,
-		{memtoregD,memwriteD,alusrcD,regdstD,regwriteD,alucontrolD,hiwriteD,lowriteD,hireadD,loreadD},
-		{memtoregE,memwriteE,alusrcE,regdstE,regwriteE,alucontrolE,hiwriteE,lowriteE,hireadE,loreadE}
+		{memtoregD,memwriteD,alusrcD,regdstD,regwriteD,alucontrolD,hiwriteD,lowriteD,hireadD,loreadD,multD},
+		{memtoregE,memwriteE,alusrcE,regdstE,regwriteE,alucontrolE,hiwriteE,lowriteE,hireadE,loreadE,multE}
 		);
 	flopr #(12) regM(
 		clk,rst,
-		{memtoregE,memwriteE,regwriteE,hiwriteE,lowriteE},
-		{memtoregM,memwriteM,regwriteM,hiwriteM,lowriteM}
+		{memtoregE,memwriteE,regwriteE,hiwriteE,lowriteE,multE},
+		{memtoregM,memwriteM,regwriteM,hiwriteM,lowriteM,multM}
 		);
 	flopr #(8) regW(
 		clk,rst,

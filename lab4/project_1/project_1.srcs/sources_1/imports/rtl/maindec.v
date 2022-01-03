@@ -30,15 +30,18 @@ module maindec(
 	output wire jump,
 	
 	output wire hiwrite,lowrite, //hi lo寄存器写信号
-	output wire hiread,loread //hi lo寄存器读信号
+	output wire hiread,loread, //hi lo寄存器读信号
+	output wire mult//乘法信号，用来控制hi lo 输入
     );
 	reg[6:0] controls;
 	assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump} = controls;
 	
-	assign hiwrite = op == 6'b000000 && funct == `EXE_MTHI;
-	assign lowrite = op == 6'b000000 && funct == `EXE_MTLO;//如果是写入hi/lo，则定义hi lo 写信号为1
+	assign hiwrite = op == 6'b000000 && (funct == `EXE_MTHI || funct == `EXE_MULT || funct == `EXE_MULTU);
+	assign lowrite = op == 6'b000000 && (funct == `EXE_MTLO || funct == `EXE_MULT || funct == `EXE_MULTU);//如果是写入hi/lo，则定义hi lo 写信号为1
 	assign hiread = op == 6'b000000 && funct == `EXE_MFHI;
 	assign loread = op == 6'b000000 && funct == `EXE_MFLO;//需要读取hi/lo，则定义hi lo 读信号为1
+	assign mult = op == 6'b000000 && (funct == `EXE_MULT || funct == `EXE_MULTU);//乘法信号，用来控制hi lo 输入
+	
 	
 	always @(*) begin
 		case (op)
@@ -53,6 +56,11 @@ module maindec(
 			6'b001101:controls <= 7'b1010000;//ori
 			6'b001100:controls <= 7'b1010000;//alusrc
 			6'b001110:controls <= 7'b1010000;//xori
+			
+			6'b001000:controls <= 7'b1010000;//addi
+			6'b001001:controls <= 7'b1010000;//addiu
+			6'b001010:controls <= 7'b1010000;//slti
+			6'b001011:controls <= 7'b1010000;//sltiu
 			
 			default:
 			 begin

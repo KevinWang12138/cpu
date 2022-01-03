@@ -45,7 +45,8 @@ module datapath(
 	input wire memtoregW,
 	input wire regwriteW,
 	input wire hiwriteE,lowriteE,hiwriteM,lowriteM,
-	input wire hireadE,loreadE
+	input wire hireadE,loreadE,
+	input wire multE,multM
     );
 	
 	//fetch stage
@@ -73,10 +74,12 @@ module datapath(
 	wire [31:0] aluoutW,readdataW,resultW;
 	
 	wire [4:0] saD,saE;//新增的sa信号。6条移位运算指令需要它
-	wire [31:0] regtohiD,regtohiE,regtohiM;
-	wire [31:0] regtoloD,regtoloE,regtoloM;
+	wire [31:0] regtohiD,regtohiE,regtohiM,inhi;
+	wire [31:0] regtoloD,regtoloE,regtoloM,inlo;
 	wire [31:0] hiout,loout;//hi lo寄存器里的数
 	
+	wire [31:0] alutohiE,alutoloE;//alu算出来的高低两个部分的位
+	wire [31:0] alutohiM,alutoloM;
 
 	//hazard detection
 	hazard h(
@@ -150,7 +153,7 @@ module datapath(
 	mux2 #(32) srcbmux(srcb2E,signimmE,alusrcE,srcb3E);
 	mux2 #(32) srcbmuxforhi(srcb3E,hiout,hireadE,srcb4E);
 	mux2 #(32) srcbmuxforlo(srcb4E,loout,loreadE,srcb5E);//为输入数进行选择，是不是需要hi或者lo
-	alu alu(srca2E,srcb5E,alucontrolE,saE,aluoutE);
+	alu alu(srca2E,srcb5E,alucontrolE,saE,aluoutE,alutohiE,alutoloE);
 	mux2 #(5) wrmux(rtE,rdE,regdstE,writeregE);
 
 	//mem stage
@@ -159,7 +162,11 @@ module datapath(
 	flopr #(5) r3M(clk,rst,writeregE,writeregM);
 	flopr #(32) r4M(clk,rst,regtohiE,regtohiM);
 	flopr #(32) r5M(clk,rst,regtoloE,regtoloM);
-	hilo_reg hilo_reg(clk,rst,hiwriteM,lowriteM,regtohiM,regtoloM,hiout,loout);
+	flopr #(32) r6M(clk,rst,alutohiE,alutohiM);
+	flopr #(32) r7M(clk,rst,alutoloE,alutoloM);
+	mux2 #(32) muxforhi(regtohiM,alutohiM,multM,inhi);
+	mux2 #(32) muxforlo(regtoloM,alutoloM,multM,inlo);//选择器，选择是乘法算出来的传给hi lo还是寄存器传给hi lo 
+	hilo_reg hilo_reg(clk,rst,hiwriteM,lowriteM,inhi,inlo,hiout,loout);
 
 	//writeback stage
 	flopr #(32) r1W(clk,rst,aluoutM,aluoutW);

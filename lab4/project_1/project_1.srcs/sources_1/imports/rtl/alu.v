@@ -26,11 +26,14 @@ module alu(
 	input wire[7:0] op,
 	input wire[4:0] sa,//新增的sa信号。6条移位运算指令需要它
 	output reg[31:0] y,
-	output reg overflow,
-	output wire zero
+	output reg[31:0] alutohi,
+	output reg[31:0] alutolo
+	//output reg overflow,
+	//output wire zero
     );
 
 	wire[31:0] s,bout;
+	reg[63:0] mulresult;
 	assign bout = op[2] ? ~b : b;
 	assign s = a + bout + op[2];
 	always @(*) begin
@@ -58,6 +61,34 @@ module alu(
             `EXE_MFLO_OP: y <= a + b;
             `EXE_MTHI_OP: y <= a + b;//这里的y只有展示数据的功能，算出来也不会用到，但是会在仿真中出现
             `EXE_MTLO_OP: y <= a + b;
+            
+            //14条算术指令
+            `EXE_ADD_OP: y <= a + b;
+            `EXE_ADDU_OP: y <= a + b;
+            `EXE_ADDI_OP: y <= a + b;
+            `EXE_ADDIU_OP: y <= a + b;
+            `EXE_SUB_OP: y <= a - b;
+            `EXE_SUBU_OP: y <= a - b;
+            `EXE_SLT_OP: y <= a[31] & !b[31] ? 1 : // a[31]: a<0
+                            !a[31] &  b[31] ? 0 :
+                            a < b;
+             `EXE_SLTU_OP: y <= a < b;
+             `EXE_SLTI_OP: y <=  a[31] & !b[31] ? 1 :
+                            !a[31] &  b[31] ? 0 :
+                            a < b; 
+             `EXE_SLTIU_OP: y <= a < b;
+             `EXE_MULT_OP:
+                begin 
+                    mulresult <= $signed(a) * $signed(b);
+                    alutohi <= mulresult[63:32];
+                    alutolo <= mulresult[31:0];
+                end
+             `EXE_MULTU_OP: 
+                begin
+                    mulresult <= {32'b0, a} * {32'b0, b};
+                    alutohi <= mulresult[63:32];
+                    alutolo <= mulresult[31:0];
+                end
 			/*
 			3'b000: y <= a & bout;
 			3'b001: y <= a | bout;
@@ -68,6 +99,7 @@ module alu(
 			default : y <= 32'b0;
 		endcase
 	end
+	/*
 	assign zero = (y == 32'b1);
 
 	always @(*) begin
@@ -79,5 +111,6 @@ module alu(
 			default : overflow <= 1'b0;
 		endcase	
 	end
+	*/
 
 endmodule
