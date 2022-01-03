@@ -53,6 +53,11 @@ module alu(
 		    `EXE_SRLV_OP : y <= b >> a[4:0];
 		    `EXE_SRAV_OP : y <= ({32{b[31]}} << (6'd32 - {1'b0, a[4:0]})) | (b >> a[4:0]) ;
 		    
+		    //数据移动指令
+		    `EXE_MFHI_OP: y <= a + b;
+            `EXE_MFLO_OP: y <= a + b;
+            `EXE_MTHI_OP: y <= a + b;//这里的y只有展示数据的功能，算出来也不会用到，但是会在仿真中出现
+            `EXE_MTLO_OP: y <= a + b;
 			/*
 			3'b000: y <= a & bout;
 			3'b001: y <= a | bout;

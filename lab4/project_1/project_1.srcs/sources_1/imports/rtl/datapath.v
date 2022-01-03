@@ -43,7 +43,9 @@ module datapath(
 	input wire[31:0] readdataM,
 	//writeback stage
 	input wire memtoregW,
-	input wire regwriteW
+	input wire regwriteW,
+	input wire hiwriteE,lowriteE,hiwriteM,lowriteM,
+	input wire hireadE,loreadE
     );
 	
 	//fetch stage
@@ -62,7 +64,7 @@ module datapath(
 	wire [4:0] rsE,rtE,rdE;
 	wire [4:0] writeregE;
 	wire [31:0] signimmE;
-	wire [31:0] srcaE,srca2E,srcbE,srcb2E,srcb3E;
+	wire [31:0] srcaE,srca2E,srcbE,srcb2E,srcb3E,srcb4E,srcb5E;
 	wire [31:0] aluoutE;
 	//mem stage
 	wire [4:0] writeregM;
@@ -71,6 +73,10 @@ module datapath(
 	wire [31:0] aluoutW,readdataW,resultW;
 	
 	wire [4:0] saD,saE;//新增的sa信号。6条移位运算指令需要它
+	wire [31:0] regtohiD,regtohiE,regtohiM;
+	wire [31:0] regtoloD,regtoloE,regtoloM;
+	wire [31:0] hiout,loout;//hi lo寄存器里的数
+	
 
 	//hazard detection
 	hazard h(
@@ -125,8 +131,9 @@ module datapath(
 	assign rtD = instrD[20:16];
 	assign rdD = instrD[15:11];
 	assign saD = instrD[10:6];//新增的sa信号。6条移位运算指令需要它
-	
-
+	assign regtohiD = srcaD;//需要写入hi的数
+    assign regtoloD = srcaD;//需要写入lo的数
+    
 	//execute stage
 	floprc #(32) r1E(clk,rst,flushE,srcaD,srcaE);
 	floprc #(32) r2E(clk,rst,flushE,srcbD,srcbE);
@@ -135,17 +142,24 @@ module datapath(
 	floprc #(5) r5E(clk,rst,flushE,rtD,rtE);
 	floprc #(5) r6E(clk,rst,flushE,rdD,rdE);
 	floprc #(5) r7E(clk,rst,flushE,saD,saE);//新增的sa信号。6条移位运算指令需要它
+	floprc #(32) r8E(clk,rst,flushE,regtohiD,regtohiE);//需要写入hi的数
+	floprc #(32) r9E(clk,rst,flushE,regtoloD,regtoloE);//需要写入lo的数
 
 	mux3 #(32) forwardaemux(srcaE,resultW,aluoutM,forwardaE,srca2E);
 	mux3 #(32) forwardbemux(srcbE,resultW,aluoutM,forwardbE,srcb2E);
 	mux2 #(32) srcbmux(srcb2E,signimmE,alusrcE,srcb3E);
-	alu alu(srca2E,srcb3E,alucontrolE,saE,aluoutE);
+	mux2 #(32) srcbmuxforhi(srcb3E,hiout,hireadE,srcb4E);
+	mux2 #(32) srcbmuxforlo(srcb4E,loout,loreadE,srcb5E);//为输入数进行选择，是不是需要hi或者lo
+	alu alu(srca2E,srcb5E,alucontrolE,saE,aluoutE);
 	mux2 #(5) wrmux(rtE,rdE,regdstE,writeregE);
 
 	//mem stage
 	flopr #(32) r1M(clk,rst,srcb2E,writedataM);
 	flopr #(32) r2M(clk,rst,aluoutE,aluoutM);
 	flopr #(5) r3M(clk,rst,writeregE,writeregM);
+	flopr #(32) r4M(clk,rst,regtohiE,regtohiM);
+	flopr #(32) r5M(clk,rst,regtoloE,regtoloM);
+	hilo_reg hilo_reg(clk,rst,hiwriteM,lowriteM,regtohiM,regtoloM,hiout,loout);
 
 	//writeback stage
 	flopr #(32) r1W(clk,rst,aluoutM,aluoutW);

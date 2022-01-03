@@ -22,14 +22,24 @@
 
 module maindec(
 	input wire[5:0] op,
+	input wire[5:0] funct,
 
 	output wire memtoreg,memwrite,
 	output wire branch,alusrc,
 	output wire regdst,regwrite,
-	output wire jump
+	output wire jump,
+	
+	output wire hiwrite,lowrite, //hi lo寄存器写信号
+	output wire hiread,loread //hi lo寄存器读信号
     );
 	reg[6:0] controls;
 	assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump} = controls;
+	
+	assign hiwrite = op == 6'b000000 && funct == `EXE_MTHI;
+	assign lowrite = op == 6'b000000 && funct == `EXE_MTLO;//如果是写入hi/lo，则定义hi lo 写信号为1
+	assign hiread = op == 6'b000000 && funct == `EXE_MFHI;
+	assign loread = op == 6'b000000 && funct == `EXE_MFLO;//需要读取hi/lo，则定义hi lo 读信号为1
+	
 	always @(*) begin
 		case (op)
 			6'b000000:controls <= 7'b1100000;//R-TYRE
