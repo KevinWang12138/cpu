@@ -36,8 +36,8 @@ module maindec(
 	reg[6:0] controls;
 	assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump} = controls;
 	
-	assign hiwrite = op == 6'b000000 && (funct == `EXE_MTHI || funct == `EXE_MULT || funct == `EXE_MULTU);
-	assign lowrite = op == 6'b000000 && (funct == `EXE_MTLO || funct == `EXE_MULT || funct == `EXE_MULTU);//如果是写入hi/lo，则定义hi lo 写信号为1
+	assign hiwrite = op == 6'b000000 && (funct == `EXE_MTHI || funct == `EXE_MULT || funct == `EXE_MULTU );
+	assign lowrite = op == 6'b000000 && (funct == `EXE_MTLO || funct == `EXE_MULT || funct == `EXE_MULTU );//如果是写入hi/lo，则定义hi lo 写信号为1
 	assign hiread = op == 6'b000000 && funct == `EXE_MFHI;
 	assign loread = op == 6'b000000 && funct == `EXE_MFLO;//需要读取hi/lo，则定义hi lo 读信号为1
 	assign mult = op == 6'b000000 && (funct == `EXE_MULT || funct == `EXE_MULTU);//乘法信号，用来控制hi lo 输入

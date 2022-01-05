@@ -38,6 +38,7 @@ module mips(
 	wire hiwriteE,lowriteE,hiwriteM,lowriteM;
     wire hireadE,loreadE;
     wire multE,multM;
+    wire stallE;
 	controller c(
 		clk,rst,
 		//decode stage
@@ -58,7 +59,8 @@ module mips(
 		
 		hiwriteE,lowriteE,hiwriteM,lowriteM,
 		hireadE,loreadE,
-		multE,multM
+		multE,multM,
+		stallE
 		);
 	datapath dp(
 		clk,rst,
@@ -87,7 +89,8 @@ module mips(
 		
 		hiwriteE,lowriteE,hiwriteM,lowriteM,
 		hireadE,loreadE,
-		multE,multM
+		multE,multM,
+		stallE
 	    );
 	
 endmodule

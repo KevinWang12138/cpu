@@ -40,7 +40,8 @@ module controller(
 	
 	output wire hiwriteE,lowriteE,hiwriteM,lowriteM,
 	output wire hireadE,loreadE,
-	output wire multE,multM
+	output wire multE,multM,
+	input wire stallE
     );
 	
 	//decode stage
@@ -70,9 +71,10 @@ module controller(
 	assign pcsrcD = branchD & equalD;
 
 	//pipeline registers
-	floprc #(18) regE(
+	flopenrc #(18) regE(
 		clk,
 		rst,
+		~stallE,
 		flushE,
 		{memtoregD,memwriteD,alusrcD,regdstD,regwriteD,alucontrolD,hiwriteD,lowriteD,hireadD,loreadD,multD},
 		{memtoregE,memwriteE,alusrcE,regdstE,regwriteE,alucontrolE,hiwriteE,lowriteE,hireadE,loreadE,multE}

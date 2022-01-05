@@ -46,7 +46,8 @@ module datapath(
 	input wire regwriteW,
 	input wire hiwriteE,lowriteE,hiwriteM,lowriteM,
 	input wire hireadE,loreadE,
-	input wire multE,multM
+	input wire multE,multM,
+	output wire stallE
     );
 	
 	//fetch stage
@@ -67,6 +68,8 @@ module datapath(
 	wire [31:0] signimmE;
 	wire [31:0] srcaE,srca2E,srcbE,srcb2E,srcb3E,srcb4E,srcb5E;
 	wire [31:0] aluoutE;
+	wire stallE;//暂停指令，因为除法器的加入而被引入
+	wire divstallE;//由除法器发出的流水线暂停指令，当这条指令为1时，要控制前面的器件以及E都stall
 	//mem stage
 	wire [4:0] writeregM;
 	//writeback stage
@@ -74,13 +77,18 @@ module datapath(
 	wire [31:0] aluoutW,readdataW,resultW;
 	
 	wire [4:0] saD,saE;//新增的sa信号。6条移位运算指令需要它
-	wire [31:0] regtohiD,regtohiE,regtohiM,inhi;
-	wire [31:0] regtoloD,regtoloE,regtoloM,inlo;
+	wire [31:0] regtohiD,regtohiE,regtohiM,in1hi,in2hi;
+	wire [31:0] regtoloD,regtoloE,regtoloM,in1lo,in2lo;
 	wire [31:0] hiout,loout;//hi lo寄存器里的数
 	
 	wire [31:0] alutohiE,alutoloE;//alu算出来的高低两个部分的位
 	wire [31:0] alutohiM,alutoloM;
-
+	
+	wire div_clear;
+	assign div_clear = 0;
+	wire [63:0] div_resultE;//用来记录除法器输出结果，此结果应流水到M阶段，交给hilo寄存器
+    wire [63:0] div_resultM;
+    wire divE,divM;//div信号，用来控制hi lo寄存器的写入，divE信号由div组件产生
 	//hazard detection
 	hazard h(
 		//fetch stage
@@ -103,7 +111,9 @@ module datapath(
 		memtoregM,
 		//write back stage
 		writeregW,
-		regwriteW
+		regwriteW,
+		divstallE,
+		stallE
 		);
 
 	//next PC logic (operates in fetch an decode)
@@ -138,15 +148,15 @@ module datapath(
     assign regtoloD = srcaD;//需要写入lo的数
     
 	//execute stage
-	floprc #(32) r1E(clk,rst,flushE,srcaD,srcaE);
-	floprc #(32) r2E(clk,rst,flushE,srcbD,srcbE);
-	floprc #(32) r3E(clk,rst,flushE,signimmD,signimmE);
-	floprc #(5) r4E(clk,rst,flushE,rsD,rsE);
-	floprc #(5) r5E(clk,rst,flushE,rtD,rtE);
-	floprc #(5) r6E(clk,rst,flushE,rdD,rdE);
-	floprc #(5) r7E(clk,rst,flushE,saD,saE);//新增的sa信号。6条移位运算指令需要它
-	floprc #(32) r8E(clk,rst,flushE,regtohiD,regtohiE);//需要写入hi的数
-	floprc #(32) r9E(clk,rst,flushE,regtoloD,regtoloE);//需要写入lo的数
+	flopenrc #(32) r1E(clk,rst,~stallE,flushE,srcaD,srcaE);
+	flopenrc #(32) r2E(clk,rst,~stallE,flushE,srcbD,srcbE);
+	flopenrc #(32) r3E(clk,rst,~stallE,flushE,signimmD,signimmE);
+	flopenrc #(5) r4E(clk,rst,~stallE,flushE,rsD,rsE);
+	flopenrc #(5) r5E(clk,rst,~stallE,flushE,rtD,rtE);
+	flopenrc #(5) r6E(clk,rst,~stallE,flushE,rdD,rdE);
+	flopenrc #(5) r7E(clk,rst,~stallE,flushE,saD,saE);//新增的sa信号。6条移位运算指令需要它
+	flopenrc #(32) r8E(clk,rst,~stallE,flushE,regtohiD,regtohiE);//需要写入hi的数
+	flopenrc #(32) r9E(clk,rst,~stallE,flushE,regtoloD,regtoloE);//需要写入lo的数
 
 	mux3 #(32) forwardaemux(srcaE,resultW,aluoutM,forwardaE,srca2E);
 	mux3 #(32) forwardbemux(srcbE,resultW,aluoutM,forwardbE,srcb2E);
@@ -155,7 +165,19 @@ module datapath(
 	mux2 #(32) srcbmuxforlo(srcb4E,loout,loreadE,srcb5E);//为输入数进行选择，是不是需要hi或者lo
 	alu alu(srca2E,srcb5E,alucontrolE,saE,aluoutE,alutohiE,alutoloE);
 	mux2 #(5) wrmux(rtE,rdE,regdstE,writeregE);
+	divWrapper div(
+    .clk(clk), .rst(rst),
+    .clear(div_clear),
+    .a(srca2E),
+    .b(srcb5E),
+    .op(alucontrolE),
 
+    .div_result(div_resultE),
+    .divstall(divstallE),
+    .divE(divE)
+    );
+
+	//在e阶段进行除法运算
 	//mem stage
 	flopr #(32) r1M(clk,rst,srcb2E,writedataM);
 	flopr #(32) r2M(clk,rst,aluoutE,aluoutM);
@@ -164,9 +186,13 @@ module datapath(
 	flopr #(32) r5M(clk,rst,regtoloE,regtoloM);
 	flopr #(32) r6M(clk,rst,alutohiE,alutohiM);
 	flopr #(32) r7M(clk,rst,alutoloE,alutoloM);
-	mux2 #(32) muxforhi(regtohiM,alutohiM,multM,inhi);
-	mux2 #(32) muxforlo(regtoloM,alutoloM,multM,inlo);//选择器，选择是乘法算出来的传给hi lo还是寄存器传给hi lo 
-	hilo_reg hilo_reg(clk,rst,hiwriteM,lowriteM,inhi,inlo,hiout,loout);
+	flopr #(64) r8M(clk,rst,div_resultE,div_resultM);
+	flopr #(1) r9M(clk,rst,divE,divM);//div信号的流水
+	mux2 #(32) muxfor1hi(regtohiM,alutohiM,multM,in1hi);
+	mux2 #(32) muxfor1lo(regtoloM,alutoloM,multM,in1lo);//选择器，选择是乘法算出来的传给hi lo还是寄存器传给hi alucontrolE
+	mux2 #(32) muxfor2hi(in1hi,div_resultM[63:32],divM,in2hi);
+	mux2 #(32) muxfor2lo(in1lo,div_resultM[31:0],divM,in2lo);//选择器，选择是之前的还是除法器的结果
+	hilo_reg hilo_reg(clk,rst,hiwriteM|divM|mulM,lowriteM|divM|multM,in2hi,in2lo,hiout,loout);
 
 	//writeback stage
 	flopr #(32) r1W(clk,rst,aluoutM,aluoutW);

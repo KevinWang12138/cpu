@@ -42,7 +42,9 @@ module hazard(
 
 	//write back stage
 	input wire[4:0] writeregW,
-	input wire regwriteW
+	input wire regwriteW,
+	input wire divstallE,
+	output wire stallE
     );
 
 	wire lwstallD,branchstallD;
@@ -85,10 +87,11 @@ module hazard(
 				(writeregE == rsD | writeregE == rtD) |
 				memtoregM &
 				(writeregM == rsD | writeregM == rtD));
-	assign #1 stallD = lwstallD | branchstallD;
+	assign #1 stallE = divstallE;
+	assign #1 stallD = lwstallD | branchstallD | stallE;
 	assign #1 stallF = stallD;
 		//stalling D stalls all previous stages
-	assign #1 flushE = stallD;
+	//assign #1 flushE = stallD;//???这个啥意思，不太明白
 		//stalling D flushes next stage
 	// Note: not necessary to stall D stage on store
   	//       if source comes from load;
