@@ -95,18 +95,25 @@ read_verilog -library xil_defaultlib {
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/aludec.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/div.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/divWrapper.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/eqcmp.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenr.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v
-  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/floprc.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/greatercmp.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/greateroreqcmp.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/hazard.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/hilo_reg.v
   C:/Users/75230/Desktop/lab4/rtl/myCPU/utils/instdec.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/lesscmp.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/lessoreqcmp.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/maindec.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mips.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux2.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux3.v
   C:/Users/75230/Desktop/lab4/rtl/myCPU/mycpu_top.v
+  C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/pc.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/regfile.v
   C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/signext.v

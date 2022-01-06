@@ -31,6 +31,8 @@ module flopenr #(parameter WIDTH = 8)(
 		end else if(en) begin
 			/* code */
 			q <= d;
+		end else begin
+		    q <= 1'bz;
 		end
 	end
 endmodule

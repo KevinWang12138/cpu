@@ -21,6 +21,8 @@ module mycpu_top(
 	wire [31:0] instr;
 	wire memwrite;
 	wire [31:0] aluout, writedata, readdata;
+	wire [3:0] memsel;
+	wire memce;
     mips mips(
         .clk(clk),
         .rst(~resetn),
@@ -33,7 +35,9 @@ module mycpu_top(
         .memwriteM(memwrite),
         .aluoutM(aluout),
         .writedataM(writedata),
-        .readdataM(readdata)
+        .readdataM(readdata),
+        .memsel(memsel),
+        .memce(memce)
     );
 
     assign inst_sram_en = 1'b1;     //如果有inst_en，就用inst_en
@@ -42,8 +46,8 @@ module mycpu_top(
     assign inst_sram_wdata = 32'b0;
     assign instr = inst_sram_rdata;
 
-    assign data_sram_en = 1'b1;     //如果有data_en，就用data_en
-    assign data_sram_wen = {4{memwrite}};
+    assign data_sram_en = memwrite;     //如果有data_en，就用data_en
+    assign data_sram_wen = memsel;
     assign data_sram_addr = aluout;
     assign data_sram_wdata = writedata;
     assign readdata = data_sram_rdata;

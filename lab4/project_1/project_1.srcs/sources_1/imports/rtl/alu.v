@@ -89,6 +89,19 @@ module alu(
                     alutohi <= mulresult[63:32];
                     alutolo <= mulresult[31:0];
                 end
+             `EXE_JAL_OP: y <= a + b;
+             `EXE_JALR_OP: y <= a + b;
+             
+             //È¡,´æ Ö¸Áî
+             `EXE_LW_OP: y <= a + b;
+             `EXE_LB_OP: y <= a + b;
+             `EXE_LBU_OP: y <= a + b;
+             `EXE_LH_OP: y <= a + b;
+             `EXE_LHU_OP: y <= a + b;
+             
+             `EXE_SW_OP: y <= a + b;
+             `EXE_SB_OP: y <= a + b;
+             `EXE_SH_OP: y <= a + b;
 			/*
 			3'b000: y <= a & bout;
 			3'b001: y <= a | bout;

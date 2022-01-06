@@ -2,8 +2,8 @@
 # Vivado v2021.2 (64-bit)
 # SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
 # IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
-# Start of session at: Sun Jan  2 00:20:37 2022
-# Process ID: 4636
+# Start of session at: Thu Jan  6 16:15:17 2022
+# Process ID: 13672
 # Current directory: C:/Users/75230/Desktop/lab4/project_1/project_1.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: C:/Users/75230/Desktop/lab4/project_1/project_1.runs/synth_1/top.vds
@@ -18,13 +18,156 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 9984
-ERROR: [Synth 8-1031] res is not declared [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/alu.v:38]
-ERROR: [Synth 8-1031] res is not declared [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/alu.v:39]
-INFO: [Synth 8-2350] module alu ignored due to previous errors [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/alu.v:24]
-Failed to read verilog 'C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/alu.v'
+INFO: [Synth 8-7075] Helper process launched with PID 968
+WARNING: [Synth 8-2611] redeclaration of ansi port lbW is not allowed [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:76]
+WARNING: [Synth 8-2611] redeclaration of ansi port lbuW is not allowed [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:76]
+CRITICAL WARNING: [Synth 8-976] lbW has already been declared [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:76]
+CRITICAL WARNING: [Synth 8-2654] second declaration of lbW ignored [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:76]
+INFO: [Synth 8-994] lbW is declared here [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:55]
+INFO: [Synth 8-994] lbuW is declared here [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:55]
+WARNING: [Synth 8-2611] redeclaration of ansi port lhW is not allowed [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+WARNING: [Synth 8-2611] redeclaration of ansi port lhuW is not allowed [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+CRITICAL WARNING: [Synth 8-976] lhW has already been declared [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+CRITICAL WARNING: [Synth 8-2654] second declaration of lhW ignored [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+INFO: [Synth 8-994] lhW is declared here [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:55]
+INFO: [Synth 8-994] lhuW is declared here [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:55]
+WARNING: [Synth 8-2611] redeclaration of ansi port stallE is not allowed [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:85]
+CRITICAL WARNING: [Synth 8-976] stallE has already been declared [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:85]
+CRITICAL WARNING: [Synth 8-2654] second declaration of stallE ignored [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:85]
+INFO: [Synth 8-994] stallE is declared here [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:50]
+WARNING: [Synth 8-2611] redeclaration of ansi port writedata2M is not allowed [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:110]
+CRITICAL WARNING: [Synth 8-976] writedata2M has already been declared [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:110]
+CRITICAL WARNING: [Synth 8-2654] second declaration of writedata2M ignored [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:110]
+INFO: [Synth 8-994] writedata2M is declared here [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:42]
+WARNING: [Synth 8-1849] concatenation with unsized literal; will interpret as 32 bits [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:98]
+WARNING: [Synth 8-1849] concatenation with unsized literal; will interpret as 32 bits [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:102]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1240.617 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top' [C:/Users/75230/Desktop/lab4/rtl/top.v:27]
+INFO: [Synth 8-6157] synthesizing module 'mycpu_top' [C:/Users/75230/Desktop/lab4/rtl/myCPU/mycpu_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mips' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mips.v:23]
+INFO: [Synth 8-6157] synthesizing module 'controller' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:23]
+INFO: [Synth 8-6157] synthesizing module 'maindec' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/maindec.v:23]
+WARNING: [Synth 8-151] case item 6'b001000 is unreachable [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/maindec.v:70]
+INFO: [Synth 8-6155] done synthesizing module 'maindec' (1#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/maindec.v:23]
+WARNING: [Synth 8-7071] port 'lh' of module 'maindec' is unconnected for instance 'md' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:78]
+WARNING: [Synth 8-7071] port 'lhu' of module 'maindec' is unconnected for instance 'md' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:78]
+WARNING: [Synth 8-7023] instance 'md' of module 'maindec' has 28 connections declared, but only 26 given [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:78]
+INFO: [Synth 8-6157] synthesizing module 'aludec' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/aludec.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'aludec' (2#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/aludec.v:24]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v:23]
+	Parameter WIDTH bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc' (3#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopr' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr' (4#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+WARNING: [Synth 8-689] width (10) of port connection 'q' does not match port width (16) of module 'flopr' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:116]
+INFO: [Synth 8-6157] synthesizing module 'flopr__parameterized0' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 12 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr__parameterized0' (4#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+WARNING: [Synth 8-689] width (6) of port connection 'q' does not match port width (12) of module 'flopr__parameterized0' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:121]
+WARNING: [Synth 8-3848] Net lhW in module/entity controller does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:55]
+WARNING: [Synth 8-3848] Net lhuW in module/entity controller does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:55]
+WARNING: [Synth 8-3848] Net lhuD in module/entity controller does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+WARNING: [Synth 8-3848] Net lhD in module/entity controller does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+WARNING: [Synth 8-3848] Net lhuE in module/entity controller does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+WARNING: [Synth 8-3848] Net lhE in module/entity controller does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:77]
+INFO: [Synth 8-6155] done synthesizing module 'controller' (5#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/controller.v:23]
+INFO: [Synth 8-6157] synthesizing module 'datapath' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:23]
+INFO: [Synth 8-6157] synthesizing module 'hazard' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/hazard.v:23]
+WARNING: [Synth 8-3848] Net flushE in module/entity hazard does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/hazard.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'hazard' (6#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/hazard.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mux2' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux2.v:23]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2' (7#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux2.v:23]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/regfile.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (8#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/regfile.v:23]
+INFO: [Synth 8-6157] synthesizing module 'pc' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/pc.v:23]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'pc' (9#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/pc.v:23]
+INFO: [Synth 8-6157] synthesizing module 'adder' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/adder.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'adder' (10#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/adder.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopenr' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenr.v:23]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr' (11#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenr.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc__parameterized0' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v:23]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc__parameterized0' (11#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v:23]
+INFO: [Synth 8-6157] synthesizing module 'signext' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/signext.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'signext' (12#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/signext.v:23]
+INFO: [Synth 8-6157] synthesizing module 'sl2' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/sl2.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'sl2' (13#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/sl2.v:23]
+INFO: [Synth 8-6157] synthesizing module 'eqcmp' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/eqcmp.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'eqcmp' (14#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/eqcmp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'greateroreqcmp' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/greateroreqcmp.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'greateroreqcmp' (15#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/greateroreqcmp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'greatercmp' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/greatercmp.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'greatercmp' (16#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/greatercmp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'lessoreqcmp' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/lessoreqcmp.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'lessoreqcmp' (17#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/lessoreqcmp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'lesscmp' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/lesscmp.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'lesscmp' (18#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/lesscmp.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc__parameterized1' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v:23]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc__parameterized1' (18#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopenrc.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mux3' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux3.v:23]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3' (19#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux3.v:23]
+INFO: [Synth 8-6157] synthesizing module 'alu' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/alu.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (20#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/alu.v:24]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized0' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux2.v:23]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized0' (20#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mux2.v:23]
+INFO: [Synth 8-6157] synthesizing module 'divWrapper' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/divWrapper.v:24]
+INFO: [Synth 8-6157] synthesizing module 'div' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/div.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/div.v:63]
+WARNING: [Synth 8-6014] Unused sequential element div_num1_reg was removed.  [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/div.v:56]
+INFO: [Synth 8-6155] done synthesizing module 'div' (21#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/div.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'divWrapper' (22#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/divWrapper.v:24]
+INFO: [Synth 8-6157] synthesizing module 'flopr__parameterized1' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr__parameterized1' (22#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopr__parameterized2' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr__parameterized2' (22#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopr__parameterized3' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 64 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr__parameterized3' (22#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopr__parameterized4' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr__parameterized4' (22#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopr__parameterized5' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+	Parameter WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr__parameterized5' (22#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/flopr.v:23]
+INFO: [Synth 8-6157] synthesizing module 'hilo_reg' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/hilo_reg.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'hilo_reg' (23#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/hilo_reg.v:23]
+INFO: [Synth 8-6157] synthesizing module 'mydatamem' [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:21]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:35]
+INFO: [Synth 8-226] default block is never used [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:46]
+INFO: [Synth 8-226] default block is never used [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:71]
+INFO: [Synth 8-226] default block is never used [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:131]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:157]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:33]
+INFO: [Synth 8-6155] done synthesizing module 'mydatamem' (24#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/new/mydatamem.v:21]
+WARNING: [Synth 8-3848] Net memce in module/entity datapath does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:61]
+WARNING: [Synth 8-3848] Net flushD in module/entity datapath does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:74]
+WARNING: [Synth 8-3848] Net mulM in module/entity datapath does not have driver. [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:231]
+INFO: [Synth 8-6155] done synthesizing module 'datapath' (25#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/datapath.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'mips' (26#1) [C:/Users/75230/Desktop/lab4/project_1/project_1.srcs/sources_1/imports/rtl/mips.v:23]
+ERROR: [Synth 8-448] named port connection 'memce' does not exist for instance 'mips' of module 'mips' [C:/Users/75230/Desktop/lab4/rtl/myCPU/mycpu_top.v:40]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [C:/Users/75230/Desktop/lab4/rtl/myCPU/mycpu_top.v:56]
+INFO: [Synth 8-6157] synthesizing module 'instdec' [C:/Users/75230/Desktop/lab4/rtl/myCPU/utils/instdec.v:27]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/75230/Desktop/lab4/rtl/myCPU/utils/instdec.v:116]
+ERROR: [Synth 8-6156] failed synthesizing module 'instdec' [C:/Users/75230/Desktop/lab4/rtl/myCPU/utils/instdec.v:27]
+ERROR: [Synth 8-6156] failed synthesizing module 'mycpu_top' [C:/Users/75230/Desktop/lab4/rtl/myCPU/mycpu_top.v:1]
+ERROR: [Synth 8-6156] failed synthesizing module 'top' [C:/Users/75230/Desktop/lab4/rtl/top.v:27]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1240.617 ; gain = 0.000
+---------------------------------------------------------------------------------
+RTL Elaboration failed
 INFO: [Common 17-83] Releasing license: Synthesis
-7 Infos, 0 Warnings, 0 Critical Warnings and 3 Errors encountered.
+93 Infos, 26 Warnings, 8 Critical Warnings and 5 Errors encountered.
 synth_design failed
 ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
-INFO: [Common 17-206] Exiting Vivado at Sun Jan  2 00:20:54 2022...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan  6 16:15:35 2022...

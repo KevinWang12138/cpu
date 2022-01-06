@@ -26,7 +26,9 @@ module mips(
 	input wire[31:0] instrF,
 	output wire memwriteM,
 	output wire[31:0] aluoutM,writedataM,
-	input wire[31:0] readdataM 
+	input wire[31:0] readdataM ,
+	output wire [3:0] memsel,
+	output wire memce
     );
 	
 	wire [5:0] opD,functD;
@@ -39,6 +41,16 @@ module mips(
     wire hireadE,loreadE;
     wire multE,multM;
     wire stallE;
+    wire rsGreaterOrEqualZeroD;
+    wire [4:0] rtD;//用来判断branch指令到底是哪个
+    wire rsGreaterZeroD;
+    wire rsLessOrEqualZeroD;
+    wire rsLessZeroD;
+    wire jumpD;
+    wire jr;
+    wire jalD,jalE;
+    wire jalrD,jalrE;
+    wire lbW,lbuW,lhW,lhuW;
 	controller c(
 		clk,rst,
 		//decode stage
@@ -60,7 +72,16 @@ module mips(
 		hiwriteE,lowriteE,hiwriteM,lowriteM,
 		hireadE,loreadE,
 		multE,multM,
-		stallE
+		stallE,
+		rsGreaterOrEqualZeroD,
+		rtD,
+		rsGreaterZeroD,
+		rsLessOrEqualZeroD,
+		rsLessZeroD,
+		jr,
+		jalD,jalE,
+		jalrD,jalrE,
+		lbW,lbuW,lhW,lhuW
 		);
 	datapath dp(
 		clk,rst,
@@ -90,7 +111,17 @@ module mips(
 		hiwriteE,lowriteE,hiwriteM,lowriteM,
 		hireadE,loreadE,
 		multE,multM,
-		stallE
+		stallE,
+		rsGreaterOrEqualZeroD,
+		rtD,
+		rsGreaterZeroD,
+		rsLessOrEqualZeroD,
+		rsLessZeroD,
+		jr,
+		jalD,jalE,
+		jalrD,jalrE,
+		lbW,lbuW,lhW,lhuW,
+		memsel,memce
 	    );
 	
 endmodule

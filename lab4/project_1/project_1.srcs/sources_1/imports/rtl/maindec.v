@@ -31,7 +31,18 @@ module maindec(
 	
 	output wire hiwrite,lowrite, //hi lo寄存器写信号
 	output wire hiread,loread, //hi lo寄存器读信号
-	output wire mult//乘法信号，用来控制hi lo 输入
+	output wire mult,//乘法信号，用来控制hi lo 输入
+	output wire beq,
+	output wire bne,//bne信号
+	output wire bgez,//bgez信号
+	input wire[4:0] rt,
+	output wire bgtz,//bgtz信号
+	output wire blez,//blez信号
+	output wire bltz,//bltz信号
+	output wire jr,//jr指令
+	output wire jal,//jal指令
+	output wire jalr,//jalr指令
+	output wire lb,lbu,lh,lhu
     );
 	reg[6:0] controls;
 	assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump} = controls;
@@ -41,11 +52,30 @@ module maindec(
 	assign hiread = op == 6'b000000 && funct == `EXE_MFHI;
 	assign loread = op == 6'b000000 && funct == `EXE_MFLO;//需要读取hi/lo，则定义hi lo 读信号为1
 	assign mult = op == 6'b000000 && (funct == `EXE_MULT || funct == `EXE_MULTU);//乘法信号，用来控制hi lo 输入
-	
+	assign beq = op == 6'b000100;//beq信号
+	assign bne = op == 6'b000101;//bne信号
+	assign bgez = (op == 6'b000001 && rt == `EXE_BGEZ) || (op == 6'b000001 && rt == `EXE_BGEZAL);//bgez信号
+	assign bgtz = op == 6'b000111;//bgtz信号
+	assign blez = op == 6'b000110;//blez信号
+	assign bltz = (op == 6'b000001 && rt == `EXE_BLTZ) || (op == 6'b000001 && rt == `EXE_BLTZAL);//bltz信号
+	assign jr = op == 6'b000000 && (funct == `EXE_JR || funct == `EXE_JALR);//jr信号
+	assign jal = op == 6'b000011 || (op == 6'b000001 && rt == `EXE_BLTZAL) || (op == 6'b000001 && rt == `EXE_BGEZAL);//jal指令
+	assign jalr = op == 6'b000000 && funct == `EXE_JALR;//jalr信号
+	assign lb = op == 6'b100000;//lb指令
+	assign lbu = op == 6'b100100;//lbu指令
+	assign lh = op == 6'b100001;//lb指令
+	assign lhu = op == 6'b100101;//lbu指令
 	
 	always @(*) begin
 		case (op)
-			6'b000000:controls <= 7'b1100000;//R-TYRE
+			6'b000000:
+			begin
+			 case (funct)
+			     `EXE_JR:controls <= 7'b0000000;//jr指令不需要junp信号
+			     `EXE_JALR:controls <= 7'b1100000;//alusrc随便写一个
+			     default:controls <= 7'b1100000;//R-alusrc
+			 endcase
+			end
 			6'b100011:controls <= 7'b1010010;//LW
 			6'b101011:controls <= 7'b0010100;//SW
 			6'b000100:controls <= 7'b0001000;//BEQ
@@ -62,6 +92,20 @@ module maindec(
 			6'b001010:controls <= 7'b1010000;//slti
 			6'b001011:controls <= 7'b1010000;//sltiu
 			
+			6'b000101:controls <= 7'b0001000;//bne  虽然是bne，但是branch也是1，因为要告诉数据通路进行暂停
+			6'b000001:controls <= 7'b0001000;//bgez bltz bgezal bltzal
+			6'b000111:controls <= 7'b0001000;//bgtz
+			6'b000110:controls <= 7'b0001000;//blez信号
+			
+			6'b000011:controls <= 7'b1000001;//jal指令，regdst,alusrc随便设置一个，最后还会改正的
+			
+			6'b100000:controls <= 7'b1010010;//lb
+			6'b100100:controls <= 7'b1010010;//lbu
+			6'b100001:controls <= 7'b1010010;//lh
+			6'b100101:controls <= 7'b1010010;//lhu
+			
+			6'b101000:controls <= 7'b0010100;
+			6'b101001:controls <= 7'b0010100;
 			default:
 			 begin
 			     controls <= 7'b000000000;//illegal op

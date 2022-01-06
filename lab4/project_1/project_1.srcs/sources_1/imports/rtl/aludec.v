@@ -24,7 +24,8 @@
 module aludec(
 	input wire[5:0] funct,
 	input wire[5:0] op,
-	output reg[7:0] alucontrol
+	output reg[7:0] alucontrol,
+	input jal
     );
 	always @(*) begin
         case (op)
@@ -41,17 +42,32 @@ module aludec(
             `EXE_ADDIU  : alucontrol <= `EXE_ADDIU_OP;
 
             // 分支跳转指令
-            /*`EXE_J      : alucontrol <= `EXE_J_OP     ;
+            `EXE_J      : alucontrol <= `EXE_J_OP     ;
             `EXE_JAL    : alucontrol <= `EXE_JAL_OP   ;
             `EXE_BEQ    : alucontrol <= `EXE_BEQ_OP   ;
-            `EXE_BGEZ   : alucontrol <= `EXE_BGEZ_OP  ; 
-            `EXE_BGEZAL : alucontrol <= `EXE_BGEZAL_OP;
             `EXE_BGTZ   : alucontrol <= `EXE_BGTZ_OP  ;
             `EXE_BLEZ   : alucontrol <= `EXE_BLEZ_OP  ;
+            `EXE_BNE    : alucontrol <= `EXE_BNE_OP   ;
+            
+            
+            6'b000001 : 
+            begin
+                if(jal)
+                begin
+                    alucontrol <= `EXE_JAL_OP   ;
+                end
+            end
+            /*
+            
+            
+            `EXE_BGEZ   : alucontrol <= `EXE_BGEZ_OP  ; 
+            `EXE_BGEZAL : alucontrol <= `EXE_BGEZAL_OP;
+            
+            
             `EXE_BLTZ   : alucontrol <= `EXE_BLTZ_OP  ;
             `EXE_BLTZAL : alucontrol <= `EXE_BLTZAL_OP;
-            `EXE_BNE    : alucontrol <= `EXE_BNE_OP   ;*/
-
+            
+            */
             // 访存指令
             `EXE_LB     : alucontrol <= `EXE_LB_OP ;
             `EXE_LBU    : alucontrol <= `EXE_LBU_OP;
@@ -96,7 +112,7 @@ module aludec(
                     `EXE_SLT    : alucontrol <= `EXE_SLT_OP  ;
                     `EXE_SLTU   : alucontrol <= `EXE_SLTU_OP ;
                 // 分支跳转指令
-                    `EXE_JALR   : alucontrol <= `EXE_JALR_OP ;
+                    `EXE_JALR   : alucontrol <=  `EXE_JALR_OP ;
                     `EXE_JR     : alucontrol <= `EXE_JR_OP   ;
                 // 内陷指令
                     `EXE_SYSCALL: alucontrol <= `EXE_SYSCALL_OP;
