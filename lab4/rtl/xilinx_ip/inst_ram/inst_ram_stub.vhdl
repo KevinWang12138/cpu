@@ -1,7 +1,7 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
--- Date        : Thu Jan  6 16:15:14 2022
+-- Date        : Mon Jan 10 00:04:25 2022
 -- Host        : LAPTOP-5SB46T2D running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub c:/Users/75230/Desktop/lab4/rtl/xilinx_ip/inst_ram/inst_ram_stub.vhdl
 -- Design      : inst_ram

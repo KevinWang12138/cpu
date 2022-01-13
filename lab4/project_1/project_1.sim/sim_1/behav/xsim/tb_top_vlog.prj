@@ -24,7 +24,7 @@ verilog xil_defaultlib "C:/Users/75230/Desktop/lab4/rtl/myCPU/utils/defines2.vh"
 "../../../../project_1.srcs/sources_1/imports/rtl/mips.v" \
 "../../../../project_1.srcs/sources_1/imports/rtl/mux2.v" \
 "../../../../project_1.srcs/sources_1/imports/rtl/mux3.v" \
-"../../../../../rtl/myCPU/mycpu_top.v" \
+"../../../../project_1.srcs/sources_1/imports/myCPU/mycpu_top.v" \
 "../../../../project_1.srcs/sources_1/new/mydatamem.v" \
 "../../../../project_1.srcs/sources_1/imports/rtl/pc.v" \
 "../../../../project_1.srcs/sources_1/imports/rtl/regfile.v" \

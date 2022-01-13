@@ -52,7 +52,8 @@ module controller(
 	output wire jr,//传递给数据通路的jr信号，因为跳转相关都在数据通路中执行
 	output wire jalD,jalE,//传递给数据通路
 	output wire jalrD,jalrE,
-	output wire lbW,lbuW,lhW,lhuW
+	output wire lbW,lbuW,lhW,lhuW,
+	output wire reluD,reluE
     );
 	
 	//decode stage
@@ -75,6 +76,8 @@ module controller(
     
     wire lbD,lbE,lbM,lbW,lbuD,lbuE,lbuM,lbuW;
     wire lhD,lhE,lhM,lhW,lhuD,lhuE,lhuM,lhuW;
+    
+    wire reluD,reluE;
 	maindec md(
 		opD,functD,
 		memtoregD,memwriteD,
@@ -95,20 +98,21 @@ module controller(
 		jr,
 		jalD,
 		jalrD,
-		lbD,lbuD
+		lbD,lbuD,
+		reluD
 		);
 	aludec ad(functD,opD,alucontrolD,jalD);
     //beq信号，并且两个数相等               bne信号，并且两个数不等   bgez信号，并且rs大于等于0           bgtz信号，并且rs大于0                  blez信号，并且rs小于等于0             bltz信号，并且rs小于0
 	assign pcsrcD = (branchD &beq & equalD)|(branchD & bne & ~equalD)|(branchD & bgez & rsGreaterOrEqualZeroD)|(branchD & bgtz & rsGreaterZeroD)|(branchD & blez & rsLessOrEqualZeroD)|(branchD & bltz & rsLessZeroD);
 
 	//pipeline registers
-	flopenrc #(24) regE(
+	flopenrc #(25) regE(
 		clk,
 		rst,
 		~stallE,
 		flushE,
-		{memtoregD,memwriteD,alusrcD,regdstD,regwriteD,alucontrolD,hiwriteD,lowriteD,hireadD,loreadD,multD,jalD,jalrD,lbD,lbuD,lhD,lhuD},
-		{memtoregE,memwriteE,alusrcE,regdstE,regwriteE,alucontrolE,hiwriteE,lowriteE,hireadE,loreadE,multE,jalE,jalrE,lbE,lbuE,lbE,lbuE}
+		{memtoregD,memwriteD,alusrcD,regdstD,regwriteD,alucontrolD,hiwriteD,lowriteD,hireadD,loreadD,multD,jalD,jalrD,lbD,lbuD,lhD,lhuD,reluD},
+		{memtoregE,memwriteE,alusrcE,regdstE,regwriteE,alucontrolE,hiwriteE,lowriteE,hireadE,loreadE,multE,jalE,jalrE,lbE,lbuE,lbE,lbuE,reluE}
 		);
 	flopr #(16) regM(
 		clk,rst,

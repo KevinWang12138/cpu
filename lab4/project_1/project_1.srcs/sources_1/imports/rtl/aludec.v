@@ -29,6 +29,8 @@ module aludec(
     );
 	always @(*) begin
         case (op)
+             //新加的指令
+             6'b111111:alucontrol <= 8'b11111111;//自己随便编的一个特殊数，和别的都不一样
             // 逻辑运算指令
             `EXE_ANDI	: alucontrol <= `EXE_ANDI_OP;
             `EXE_ORI	: alucontrol <= `EXE_ORI_OP ;

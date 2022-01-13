@@ -102,6 +102,18 @@ module alu(
              `EXE_SW_OP: y <= a + b;
              `EXE_SB_OP: y <= a + b;
              `EXE_SH_OP: y <= a + b;
+             
+             8'b11111111:
+             begin
+                if(a[31] == 1'b1)
+                begin
+                    y <= ~a+1'b1;
+                end
+                else
+                begin
+                    y <= a;
+                end
+             end
 			/*
 			3'b000: y <= a & bout;
 			3'b001: y <= a | bout;

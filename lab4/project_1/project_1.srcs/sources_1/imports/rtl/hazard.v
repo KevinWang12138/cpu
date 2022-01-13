@@ -44,7 +44,8 @@ module hazard(
 	input wire[4:0] writeregW,
 	input wire regwriteW,
 	input wire divstallE,
-	output wire stallE
+	output wire stallE,
+	input wire jrD
     );
 
 	wire lwstallD,branchstallD;
@@ -87,9 +88,14 @@ module hazard(
 				(writeregE == rsD | writeregE == rtD) |
 				memtoregM &
 				(writeregM == rsD | writeregM == rtD));
+	assign #1 jrstallD = jrD &
+	           (regwriteE & 
+	           (writeregE == rsD));
 	assign #1 stallE = divstallE;
-	assign #1 stallD = lwstallD | branchstallD | stallE;
-	assign #1 stallF = stallD;
+	assign #1 stallD = lwstallD | branchstallD | divstallE | jrstallD;
+	assign #1 stallF = lwstallD | branchstallD | divstallE | jrstallD;
+	
+	assign #1 flushE = lwstallD | branchstallD;
 		//stalling D stalls all previous stages
 	//assign #1 flushE = stallD;//???这个啥意思，不太明白
 		//stalling D flushes next stage

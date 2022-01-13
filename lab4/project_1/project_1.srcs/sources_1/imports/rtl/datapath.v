@@ -58,7 +58,8 @@ module datapath(
 	input wire jalrD,jalrE,
 	input wire lbW,lbuW,lhW,lhuW,
 	output wire[3:0] memsel,
-	output wire memce
+	output wire memce,
+	input wire reluD,reluE
     );
 	wire [31:0] writedataM;
 	
@@ -133,7 +134,8 @@ module datapath(
 		writeregW,
 		regwriteW,
 		divstallE,
-		stallE
+		stallE,
+		jrD
 		);
 
 	//next PC logic (operates in fetch an decode)
@@ -229,7 +231,7 @@ module datapath(
 	mux2 #(32) muxfor2hi(in1hi,div_resultM[63:32],divM,in2hi);
 	mux2 #(32) muxfor2lo(in1lo,div_resultM[31:0],divM,in2lo);//选择器，选择是之前的还是除法器的结果
 	hilo_reg hilo_reg(clk,rst,hiwriteM|divM|mulM,lowriteM|divM|multM,in2hi,in2lo,hiout,loout);
-    mydatamem mem1M(alucontrolM,writedataM,aluoutM,readdataM,writedata2M,readdata2M,memsel,mem_we,mem_ce);
+    changedatamem mem1M(alucontrolM,writedataM,aluoutM,readdataM,writedata2M,readdata2M,memsel,mem_we,mem_ce);
 
 	//writeback stage
 	flopr #(32) r1W(clk,rst,aluoutM,aluoutW);

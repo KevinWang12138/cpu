@@ -42,7 +42,8 @@ module maindec(
 	output wire jr,//jr指令
 	output wire jal,//jal指令
 	output wire jalr,//jalr指令
-	output wire lb,lbu,lh,lhu
+	output wire lb,lbu,lh,lhu,
+	output wire relu
     );
 	reg[6:0] controls;
 	assign {regwrite,regdst,alusrc,branch,memwrite,memtoreg,jump} = controls;
@@ -65,6 +66,7 @@ module maindec(
 	assign lbu = op == 6'b100100;//lbu指令
 	assign lh = op == 6'b100001;//lb指令
 	assign lhu = op == 6'b100101;//lbu指令
+	assign relu = op == 6'b111111;//新增指令relu
 	
 	always @(*) begin
 		case (op)
@@ -106,6 +108,8 @@ module maindec(
 			
 			6'b101000:controls <= 7'b0010100;
 			6'b101001:controls <= 7'b0010100;
+			
+			6'b111111:controls <= 7'b1100000;//新增指令，alusrc置0，因为第二个五位读出来的数是0
 			default:
 			 begin
 			     controls <= 7'b000000000;//illegal op

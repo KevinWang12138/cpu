@@ -51,6 +51,7 @@ module mips(
     wire jalD,jalE;
     wire jalrD,jalrE;
     wire lbW,lbuW,lhW,lhuW;
+    wire reluD,reluE;
 	controller c(
 		clk,rst,
 		//decode stage
@@ -81,7 +82,8 @@ module mips(
 		jr,
 		jalD,jalE,
 		jalrD,jalrE,
-		lbW,lbuW,lhW,lhuW
+		lbW,lbuW,lhW,lhuW,
+		reluD,reluE
 		);
 	datapath dp(
 		clk,rst,
@@ -121,7 +123,10 @@ module mips(
 		jalD,jalE,
 		jalrD,jalrE,
 		lbW,lbuW,lhW,lhuW,
-		memsel,memce
+		memsel,memce,
+		
+		
+		reluD,reluE//新加的指令的控制信号
 	    );
 	
 endmodule
