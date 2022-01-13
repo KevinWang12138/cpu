@@ -1,0 +1,145 @@
+/*
+
+Xilinx Vivado v2021.2 (64-bit) [Major: 2021, Minor: 2]
+SW Build: 3367213 on Tue Oct 19 02:48:09 MDT 2021
+IP Build: 3369179 on Thu Oct 21 08:25:16 MDT 2021
+
+Process ID (PID): 2752
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Thu Jan 06 21:14:31 CST 2022
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+
+Java version: 	11.0.11 64-bit
+Java home: 	D:/Vivado/2021.2/tps/win64/jre11.0.11_9
+Java executable: 	D:/Vivado/2021.2/tps/win64/jre11.0.11_9/bin/java.exe
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Dsun.java2d.d3d=false, -Dsun.awt.nopixfmt=true, -Dsun.java2d.dpiaware=true, -Dsun.java2d.uiScale.enabled=false, -Xverify:none, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/com.sun.awt=ALL-UNNAMED, -XX:NewSize=60m, -XX:MaxNewSize=60m, -Xms256m, -Xmx3072m, -Xss5m]
+Java initial memory (-Xms): 	256 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	75230
+User home directory: C:/Users/75230
+User working directory: C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: D:/Vivado
+HDI_APPROOT: D:/Vivado/2021.2
+RDI_DATADIR: D:/Vivado/2021.2/data
+RDI_BINDIR: D:/Vivado/2021.2/bin
+
+Vivado preferences file: C:/Users/75230/AppData/Roaming/Xilinx/Vivado/2021.2/vivado.xml
+Vivado preferences directory: C:/Users/75230/AppData/Roaming/Xilinx/Vivado/2021.2/
+Vivado layouts directory: C:/Users/75230/AppData/Roaming/Xilinx/Vivado/2021.2/data/layouts
+PlanAhead jar file: 	D:/Vivado/2021.2/lib/classes/planAhead.jar
+Vivado log file: 	C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1/vivado.log
+Vivado journal file: 	C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1/vivado.jou
+Engine tmp dir: 	C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1/.Xil/Vivado-2752-LAPTOP-5SB46T2D
+
+Xilinx Environment Variables
+----------------------------
+XILINX: D:/Vivado/2021.2/ids_lite/ISE
+XILINX_DSP: D:/Vivado/2021.2/ids_lite/ISE
+XILINX_HLS: D:/Vitis_HLS/2021.2
+XILINX_PLANAHEAD: D:/Vivado/2021.2
+XILINX_VIVADO: D:/Vivado/2021.2
+XILINX_VIVADO_HLS: D:/Vivado/2021.2
+
+
+GUI allocated memory:	256 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 1,279 MB
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// TclEventType: PROJECT_OPEN_DIALOG
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// Opening Vivado Project: C:\Users\75230\Documents\Tencent Files\2724226853\FileRecv\func_test_v0.01_n4ddr\soc_sram_func\run_vivado\project_1\project_1.xpr. Version: Vivado v2021.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// Tcl Message: open_project {C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1/project_1.xpr} 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1' 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,279 MB. GUI used memory: 54 MB. Current time: 1/6/22, 9:14:32 PM CST
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project {C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1/project_1.xpr} 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1' 
+// Tcl Message: INFO: [Project 1-313] Project file moved from '/home/cyy/CO-lab-material-CQU/test/n4ddr/func_test_v0.01/soc_sram_func/run_vivado/project_1' since last save. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 71 MB (+72337kb) [00:00:16]
+// [Engine Memory]: 1,279 MB (+1189820kb) [00:00:16]
+// WARNING: HEventQueue.dispatchEvent() is taking  3489 ms.
+// [GUI Memory]: 105 MB (+31149kb) [00:00:18]
+// Tcl Message: open_project: Time (s): cpu = 00:00:24 ; elapsed = 00:00:09 . Memory (MB): peak = 1557.516 ; gain = 0.000 
+// Project name: project_1; location: C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bA
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed time: 43 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v)]", 1); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), u_cpu : xil_defaultlib.mycpu_top]", 2, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), inst_ram : inst_ram (inst_ram.xci)]", 3, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), bridge_1x2 : bridge_1x2 (bridge_1x2.v)]", 4, false); // D
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), data_ram : data_ram (data_ram.xci)]", 5, false); // D
+// Elapsed time: 19 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), u_cpu : xil_defaultlib.mycpu_top]", 2, false); // D
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // D
+// Run Command: PAResourceCommand.PACommandNames_ADD_SOURCES
+selectButton("NEXT", "Next >"); // JButton
+selectButton(PAResourceQtoS.SrcChooserPanel_ADD_OR_CREATE_SOURCE_FILE, "Add"); // D
+selectMenuItem(PAResourceQtoS.SrcChooserPanel_ADD_HDL_AND_NETLIST_FILES_TO_YOUR_PROJECT, "Add Files..."); // ao
+// Elapsed time: 11 seconds
+selectComboBox(RDIResource.HJFileChooserRecentListPreview_RECENT_DIRECTORIES, "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/run_vivado/project_1", 0); // aj
+// Elapsed time: 10 seconds
+String[] filenames31467 = {"C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/adder.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/alu.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/aludec.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/controller.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/datapath.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/defines2.vh", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/eqcmp.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/flopenr.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/flopenrc.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/flopr.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/floprc.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/hazard.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/instdec.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/maindec.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/mips.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/mux2.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/mux3.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/mycpu_top.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/pc.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/regfile.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/signext.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/sl2.v", "C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/top.v"};
+setFileChooser(filenames31467);
+selectButton("FINISH", "Finish"); // JButton
+// 'g' command handler elapsed time: 28 seconds
+dismissDialog("Add Sources"); // c
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: add_files -norecurse {{C:/Users/75230/Documents/Tencent Files/2724226853/FileRecv/func_test_v0.01_n4ddr/soc_sram_func/rtl/myCPU/defines2.vh}} 
+// Elapsed time: 17 seconds
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a
+// HMemoryUtils.trashcanNow. Engine heap size: 1,279 MB. GUI used memory: 63 MB. Current time: 1/6/22, 9:16:47 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,279 MB. GUI used memory: 64 MB. Current time: 1/6/22, 9:17:17 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,279 MB. GUI used memory: 64 MB. Current time: 1/6/22, 9:17:47 PM CST
+// HMemoryUtils.trashcanNow. Engine heap size: 1,279 MB. GUI used memory: 64 MB. Current time: 1/6/22, 9:18:17 PM CST
+// Elapsed time: 108 seconds
+selectButton("HStatusBar_ProgressStatusItem_Cancel", "Cancel"); // NullButton
+selectButton(PAResourceCommand.PACommandNames_ADD_SOURCES, "Sources_add_sources"); // D

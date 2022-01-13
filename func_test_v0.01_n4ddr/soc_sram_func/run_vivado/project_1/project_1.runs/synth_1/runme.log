@@ -1,0 +1,14 @@
+
+*** Running vivado
+    with args -log soc_lite_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_lite_top.tcl
+
+
+
+****** Vivado v2021.2 (64-bit)
+  **** SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+  **** IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source soc_lite_top.tcl -notrace
+ERROR: [Vivado 12-172] File or Directory 'C:/Users/75230/Desktop/func_test_v0.01_n4ddr/FPGAprojects/func_test_v0.01_n4ddr/soft/func/obj/inst_ram.coe' does not exist
+INFO: [Common 17-206] Exiting Vivado at Fri Jan  7 02:27:26 2022...

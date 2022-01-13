@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Thu Jan  6 21:45:36 2022
+# Process ID: 7348
+# Current directory: D:/soc_sram_func/run_vivado/project_1/project_1.runs/data_ram_synth_1
+# Command line: vivado.exe -log data_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source data_ram.tcl
+# Log file: D:/soc_sram_func/run_vivado/project_1/project_1.runs/data_ram_synth_1/data_ram.vds
+# Journal file: D:/soc_sram_func/run_vivado/project_1/project_1.runs/data_ram_synth_1\vivado.jou
+# Running On: DESKTOP-M79Q839, OS: Windows, CPU Frequency: 2400 MHz, CPU Physical cores: 4, Host memory: 17010 MB
+#-----------------------------------------------------------
+source data_ram.tcl -notrace
